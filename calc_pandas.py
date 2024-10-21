@@ -1,4 +1,7 @@
 import pandas as pd
+from datetime import datetime
+start = datetime.now()
+
 
 df = (
     pd.read_csv("data/measurements.txt", sep=";", header=None, names=["station_name", "measurement"], engine="pyarrow")
@@ -17,3 +20,7 @@ for row in df.itertuples(index=False):
         end=", "
     )
 print("\b\b} ")
+
+eind = datetime.now()
+duur = eind - start
+print('verwerking duurde ' + str(duur))

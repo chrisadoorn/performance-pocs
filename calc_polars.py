@@ -1,6 +1,8 @@
 # Code credits: https://github.com/ifnesi/1brc#submitting
 
 import polars as pl
+from datetime import datetime
+start = datetime.now()
 
 df = (
     pl.scan_csv("data/measurements.txt", separator=";", has_header=False, with_column_names=lambda cols: ["station_name", "measurement"])
@@ -21,3 +23,8 @@ for row in df.iter_rows():
         end=", "
     )
 print("\b\b} ")
+
+eind = datetime.now()
+duur = eind - start
+print('verwerking duurde ' + str(duur))
+

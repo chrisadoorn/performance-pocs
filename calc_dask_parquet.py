@@ -1,4 +1,6 @@
 import dask.dataframe as dd
+from datetime import datetime
+start = datetime.now()
 
 df = (
     dd.read_parquet("data/measurements.parquet")
@@ -19,3 +21,7 @@ for row in df.itertuples(index=False):
         end=", "
     )
 print("\b\b} ")
+
+eind = datetime.now()
+duur = eind - start
+print('verwerking duurde ' + str(duur))

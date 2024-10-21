@@ -2,6 +2,8 @@
 
 import os
 import multiprocessing as mp
+from datetime import datetime
+
 
 def get_file_chunks(
     file_name: str,
@@ -123,5 +125,9 @@ def process_file(
 
 
 if __name__ == "__main__":
+    start = datetime.now()
     cpu_count, *start_end = get_file_chunks("data/measurements.txt", max_cpu=12)
     process_file(cpu_count=cpu_count, start_end=start_end[0])
+    eind = datetime.now()
+    duur = eind - start
+    print('verwerking duurde ' + str(duur))

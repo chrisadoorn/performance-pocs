@@ -1,4 +1,6 @@
 import polars as pl
+from datetime import datetime
+start = datetime.now()
 
 df = (
     pl.scan_parquet("data/measurements.parquet")
@@ -19,3 +21,7 @@ for row in df.iter_rows():
         end=", "
     )
 print("\b\b} ")
+
+eind = datetime.now()
+duur = eind - start
+print('verwerking duurde ' + str(duur))

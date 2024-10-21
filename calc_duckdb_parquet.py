@@ -1,4 +1,6 @@
 import duckdb
+from datetime import datetime
+start = datetime.now()
 
 with duckdb.connect() as conn:
     data = conn.sql("""
@@ -19,3 +21,7 @@ with duckdb.connect() as conn:
             end=", ",
         )
     print("\b\b} ")
+
+eind = datetime.now()
+duur = eind - start
+print('verwerking duurde ' + str(duur))

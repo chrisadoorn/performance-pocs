@@ -1,5 +1,6 @@
 # https://github.com/ifnesi/1brc#submitting
 # Modified the multiprocessing version
+from datetime import datetime
 
 def process_file(file_name: str):
     result = dict()
@@ -34,4 +35,8 @@ def process_file(file_name: str):
 
 
 if __name__ == "__main__":
+    start = datetime.now()
     process_file("data/measurements.txt")
+    eind = datetime.now()
+    duur = eind - start
+    print('verwerking duurde ' + str(duur))
